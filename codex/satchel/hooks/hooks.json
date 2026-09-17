@@ -1,0 +1,56 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/scripts/bootstrap.mjs\"",
+            "timeout": 5
+          }
+        ],
+        "matcher": "^(startup|clear)$"
+      },
+      {
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "satchel",
+            "tool": "load_memory_context",
+            "input": {
+              "session_key": "${session_id}",
+              "event": "SessionStart"
+            },
+            "timeout": 10
+          }
+        ],
+        "matcher": "^(startup|clear)$"
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/scripts/bootstrap.mjs\"",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "mcp_tool",
+            "server": "satchel",
+            "tool": "load_memory_context",
+            "input": {
+              "session_key": "${session_id}",
+              "event": "PostCompact"
+            },
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
