@@ -1,23 +1,23 @@
-# Satchel plugins
+# Satchel plugins (moved)
 
-Install catalog for the Satchel plugin. It gives Claude Code and Codex the address of your Satchel, loads your memory index when a session starts, and teaches the agent how to save and read memories and tasks. No memory or credentials live here. Sign in happens in your browser after install.
+The Satchel plugin catalog now lives in the main repository: <https://github.com/NeerajG03/satchel>. This repository is archived and will not get new versions.
 
-## Claude Code
+If you added this catalog before, switch over:
 
 ```sh
-claude plugin marketplace add NeerajG03/satchel-plugins
+# Claude Code
+claude plugin uninstall satchel@satchel
+claude plugin marketplace remove satchel
+claude plugin marketplace add NeerajG03/satchel
 claude plugin install satchel@satchel
-claude mcp login plugin:satchel:satchel
 ```
-
-## Codex
 
 ```sh
-codex plugin marketplace add NeerajG03/satchel-plugins
+# Codex
+codex plugin remove satchel@satchel
+codex plugin marketplace remove satchel
+codex plugin marketplace add NeerajG03/satchel
 codex plugin add satchel@satchel
-codex mcp login satchel
 ```
 
-Then allow access on the Satchel page that opens, and start a fresh session. Manage or revoke access at https://satchel-pi.vercel.app/apps.
-
-Generated from the Satchel repository by `scripts/publish-plugins.mjs`. Do not edit here.
+Your sign-in to the Satchel service is kept. The service address did not change.
